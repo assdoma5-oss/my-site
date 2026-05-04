@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(-45deg, #ffdde1, #ee9ca7, #ffd1ff, #fbc2eb);
+    background-size: 400% 400%;
+    animation: bgMove 10s ease infinite;
+}
+
+@keyframes bgMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* Login Box */
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+
+    width: 300px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+h1 {
+    color: white;
+    font-size: 20px;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin-top: 15px;
+
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #ff4d6d;
+    color: white;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+#error {
+    color: yellow;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* Hearts */
+.heart {
+    position: absolute;
+    bottom: -50px;
+    color: red;
+    font-size: 20px;
+
+    animation: floatUp linear forwards;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+

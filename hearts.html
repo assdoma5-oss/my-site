@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Birthday Experience 🎂</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<button class="btn" onclick="toggleMusic()">🎵</button>
+
+<audio id="music" loop>
+    <source src="song.m4a">
+</audio>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>🎂 Happy Birthday Baby 🎂</h1>
+    <p>❤️ TO MY One And Only Love ❤️</p>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+    <!-- GALLERY -->
+<div class="grid">
+  <div class="card">
+    <img src="img1.png" alt="صورة 1">
+    <p class="caption">18\09\2025♾️</p>
+  </div>
+  <div class="card">
+    <img src="img2.png" alt="صورة 2">
+    <p class="caption">❤️10\05\2005❤️</p>
+  </div>
+  <div class="card">
+    <img src="img3.png" alt="صورة 3">
+    <p class="caption">224♾️</p>
+  </div>
+</div>
+
+</div>
+
+<div id="msg" class="message"></div>
+
+<!-- logo -->
+<img id="img" src="avatar.png" style="display:none;">
+<canvas id="logo"></canvas>
+
+<canvas id="bubbles"></canvas>
+
+<script src="scripts.js"></script>
+</body>
+</html>
