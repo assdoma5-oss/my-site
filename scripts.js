@@ -18,15 +18,18 @@ function heart(){
     h.style.fontSize = (10 + Math.random() * 10) + "px";
     h.style.animationDuration = (3 + Math.random() * 3) + "s";
 
+    /* ❤️ رسالة الحب */
     document.body.appendChild(h);
     setTimeout(() => h.remove(), 7000);
 }
 setInterval(heart, 500);
 
-/* 💬 الكتابة */
-const msg = document.getElementById("msg");
+document.addEventListener("DOMContentLoaded", () => {
+    const msg = document.getElementById("msg");
 
-const text = `
+    if (!msg) return;
+
+    const text = `
 كل سنة وانتي طيبة يا أجمل حاجة في حياتي ❤️
 يا نور عيني وضحكتي اللي بتيجي من غير سبب أول ما بفتكرك.
 
@@ -59,21 +62,28 @@ const text = `
 بحبك أكتر مما الكلام يقدر يوصف…
 وربنا ما يحرمنيش منك أبدًا يا أجمل وأغلى حاجة في حياتي 🌸
 `;
-let i = 0;
 
-function typeWriter() {
-    if (!msg || i >= text.length) return;
+    let i = 0;
 
-    const char = text[i];
+    function typeWriter() {
+        if (i >= text.length) return;
 
-    msg.innerHTML += (char === "\n") ? "<br>" :
-                     (char === " ") ? " " :
-                     `<span>${char}</span>`;
+        const char = text[i];
 
-    i++;
-    setTimeout(typeWriter, 40);
-}
+        if (char === "\n") {
+            msg.appendChild(document.createElement("br"));
+        } else {
+            const span = document.createElement("span");
+            span.textContent = char;
+            msg.appendChild(span);
+        }
 
+        i++;
+        setTimeout(typeWriter, 40);
+    }
+
+    typeWriter();
+});
 /* 📸 الصور */
 const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
