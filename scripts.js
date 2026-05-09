@@ -18,72 +18,43 @@ function heart(){
     h.style.fontSize = (10 + Math.random() * 10) + "px";
     h.style.animationDuration = (3 + Math.random() * 3) + "s";
 
-    /* ❤️ رسالة الحب */
     document.body.appendChild(h);
     setTimeout(() => h.remove(), 7000);
 }
 setInterval(heart, 500);
 
-document.addEventListener("DOMContentLoaded", () => {
-    const msg = document.getElementById("msg");
+/* 💬 الكتابة */
+const msg = document.getElementById("msg");
 
-    if (!msg) return;
-
-    const text = `
-كل سنة وانتي طيبة يا أجمل حاجة في حياتي ❤️
+const text = `كل سنة وانتي طيبة يا أجمل حاجة في حياتي ❤️
 يا نور عيني وضحكتي اللي بتيجي من غير سبب أول ما بفتكرك.
 
-بجد أنا بحبك حب كبير أوي،
-حب مخليني شايفك أحلى اختيار أخدته في حياتي كلها،
-وممتن لوجودك معايا بكل تفصيلة فيكي.
+بجد أنا بحبك حب كبير أوي، حب مخليني شايفك أحلى اختيار أخدته في حياتي كلها… وممتن لوجودك معايا بكل تفصيلة فيكي.
+انتي مش بس حبيبتي، انتي راحتي، وأماني، وكل حاجة حلوة في دنيتي.
 
-انتي مش بس حبيبتي،
-انتي راحتي،
-وأماني،
-وكل حاجة حلوة في دنيتي.
+يمكن نعرف بعض من فترة مش طويلة، بس انتي دخلتي حياتي وغيّرتي كل حاجة… خدتي قلبي وعقلي من غير ما أحس، وخليتي أيامي كلها ورد في ورد.
+أنا مبسوط بيكي بشكل مش طبيعي، ومبسوط إن ربنا كتبلي إنك تكوني في حياتي.
 
-يمكن نعرف بعض من فترة مش طويلة،
-بس انتي دخلتي حياتي وغيّرتي كل حاجة…
-خدتي قلبي وعقلي من غير ما أحس،
-وخليتي أيامي كلها ورد في ورد.
+وأتمنى من كل قلبي إن السنة الجاية تبقي خطيبتي، واللي بعدها تبقي معايا في بيتي، قريبة مني وعلى طول في حضني 🤍
+أنا عايزك معايا دايمًا… عايز نكمل سوا، ونكبر سوا، ونفضل سند لبعض مهما حصل.
 
-أنا مبسوط بيكي بشكل مش طبيعي،
-ومبسوط إن ربنا كتبلي إنك تكوني في حياتي.
+بحبك أكتر مما الكلام يقدر يوصف… وربنا ما يحرمنيش منك أبدًا يا أجمل وأغلى حاجة في حياتي 🌸`;
 
-وأتمنى من كل قلبي إن السنة الجاية تبقي خطيبتي،
-واللي بعدها تبقي معايا في بيتي،
-قريبة مني وعلى طول في حضني 🤍
+let i = 0;
 
-أنا عايزك معايا دايمًا…
-عايز نكمل سوا،
-ونكبر سوا،
-ونفضل سند لبعض مهما حصل.
+function typeWriter() {
+    if (!msg || i >= text.length) return;
 
-بحبك أكتر مما الكلام يقدر يوصف…
-وربنا ما يحرمنيش منك أبدًا يا أجمل وأغلى حاجة في حياتي 🌸
-`;
+    const char = text[i];
 
-    let i = 0;
+    msg.innerHTML += (char === "\n") ? "<br>" :
+                     (char === " ") ? " " :
+                     <span>${char}</span>;
 
-    function typeWriter() {
-        if (i >= text.length) return;
+    i++;
+    setTimeout(typeWriter, 40);
+}
 
-        const char = text[i];
-
-        if (char === "\n") {
-            msg.appendChild(document.createElement("br"));
-        } else {
-            const span = document.createElement("span");
-            span.textContent = char;
-            msg.appendChild(span);
-        }
-
-        i++;
-        setTimeout(typeWriter, 40);
-    }
-
-    typeWriter();
-});
 /* 📸 الصور */
 const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -95,7 +66,7 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll(".card").forEach(c => observer.observe(c));
 
-/* 🖼️ اللوجو */
+/* 🖼 اللوجو */
 const logoCanvas = document.getElementById("logo");
 const logoCtx = logoCanvas.getContext("2d");
 const img = document.getElementById("img");
@@ -171,7 +142,6 @@ function drawBubbles() {
 
     for (let i = bubbles.length - 1; i >= 0; i--) {
         let b = bubbles[i];
-
         b.x += b.speedX;
         b.y += b.speedY;
         b.alpha -= 0.008;
@@ -181,8 +151,8 @@ function drawBubbles() {
             b.x, b.y, b.size
         );
 
-        gradient.addColorStop(0, `rgba(255,105,180,${b.alpha})`);
-        gradient.addColorStop(1, `rgba(255,105,180,0)`);
+        gradient.addColorStop(0, rgba(255,105,180,${b.alpha}));
+        gradient.addColorStop(1, rgba(255,105,180,0));
 
         bubblesCtx.beginPath();
         bubblesCtx.arc(b.x, b.y, b.size, 0, Math.PI * 2);
